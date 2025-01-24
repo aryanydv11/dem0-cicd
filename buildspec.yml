@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing NGINX
+      - sudo apt-get update
+      - sudo apt-get install nginx -y
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Copying application files
+  post_build:
+    commands:
+      - echo Preparing deployment artifacts
+
+artifacts:
+  files:
+    - appspec.yml            # Ensure appspec.yml is included
+    - scripts/**             # Include all deployment scripts
+    - index.html             # Include your application files
+    - '**/*'                 # Optional: Include everything else
